@@ -30,7 +30,6 @@ contract MintTest is Test, Verifier {
         uint256 f2 = evaluateBarycentricPolynomial(2, f, weights);
 
         // uint256 _f0 = evaluateBarycentricPolynomial(0, f, weights);
-
         console.logUint(f1);
         console.logUint(f[0]);
 
@@ -178,6 +177,8 @@ contract MintTest is Test, Verifier {
 
         vm.expectRevert("Soul dispersed");
         mint.mint(proofs[16], values[16]);
+
+        assertFalse(mint.isSovled());
     }
 
     function testHack() external {
@@ -204,5 +205,7 @@ contract MintTest is Test, Verifier {
         for (uint i = 0; i < 20; i++) {
             mint.mint(proofs[i], values[i]);
         }
+
+        assertEq(mint.isSovled(), true);
     }
 }

@@ -16,7 +16,7 @@ contract Mint is Verifier {
         bool escaped1;
     }
 
-    function is_sovled() public view returns (bool) {
+    function isSovled() public view returns (bool) {
         address sender = msg.sender;
 
         return deposits[sender].escaped0 && deposits[sender].escaped1;
